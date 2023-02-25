@@ -59,3 +59,6 @@ gem 'devise'
 
 # ページネーション機能の実装
 gem 'kaminari','>1.2.1'
+
+# Fontawesomeの導入
+gem "font-awesome-sass"
