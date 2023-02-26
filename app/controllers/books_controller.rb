@@ -11,4 +11,11 @@ class BooksController < ApplicationController
 
   def edit
   end
+  
+  private
+  
+  def book_params
+    params.rewuire(:book).permit(:image, :title, :body)
+  end
+  
 end
