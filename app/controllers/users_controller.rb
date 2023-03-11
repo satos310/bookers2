@@ -9,9 +9,18 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
+  
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to user_path(@user.id), notice: "情報を更新しました。"
+    else
+      render "edit"
+    end
+  end
 
   def index
-    @user = current_user.id
+    @user = current_user
     @users = User.all
     @book = Book.new
     @books = Book.all
@@ -19,8 +28,8 @@ class UsersController < ApplicationController
 
   private
 
-  def book_params
-    params.require(:book).permit(:image, :title, :body)
+  def user_params
+    params.require(:user).permit(:name, :introduction, :profile_image)
   end
 
 end

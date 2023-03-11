@@ -1,5 +1,13 @@
 <!-- User showページ -->
  <div class="container px-5 px-sm-0">
+   <% if @book.errors.any? %>
+    <%= @book.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <div class="row">
     <%= render 'books/share', books: @books, users: :@users %>
 

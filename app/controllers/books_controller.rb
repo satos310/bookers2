@@ -5,11 +5,12 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     if @book.save
+      flash[:notice] = "You have created book successfully."
       redirect_to book_path(@book.id)
     else
-      # index.htmlに繋ぐ
-      @books = Book.all
       # viewをindexに戻す
+      @books = Book.all
+      @user = current_user
       render :index
     end
   end
@@ -32,6 +33,7 @@ class BooksController < ApplicationController
   def update
     @book =  Book.find(params[:id])
     if @book.update(book_params)
+      flash[:notice] = "You have update book successfully."
       redirect_to book_path(@book.id)
     else
       render :edit

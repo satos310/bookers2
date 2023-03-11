@@ -1,8 +1,16 @@
 <!-- User indexページ-->
 <div class="container px-5 px-sm-0">
+  <% if @book.errors.any? %>
+    <%= @book.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <div class="row">
     <%= render 'books/share', books: @books, users: :@users %>
-  
+
     <div class="col-md-8 offset-md-1">
       <h2>Users</h2>
       <table class="table">
@@ -11,11 +19,11 @@
           <th>name</th>
           <th colspan="3"></th>
         </thead>
-        
+
         <tbody>
           <% @users.each do |user| %>
             <tr>
-              <td><%= image_tag @user.get_profile_image(100,100) %></td>
+              <td><%= image_tag user.get_profile_image(100,100) %></td>
               <td><%= user.name %></td>
               <td><%= link_to "show", user_path(user.id) %></td>
             </tr>
