@@ -3,7 +3,6 @@ class CreateBooks < ActiveRecord::Migration[6.1]
     create_table :books do |t|
       t.references :user, foreign_key: true
       t.string :title
-      t.string :introduction
     end
   end
 end
