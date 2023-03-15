@@ -24,8 +24,8 @@
         </thead>
         
         <tbody>
-          <% @books.each do |books| %>
-            <% @users.each do |users| %>
+          <% @books.each do |book| %>
+            <% @users.each do |user| %>
               <tr>
                 <td>
                   <%= link_to user_path(user.id) do %>
