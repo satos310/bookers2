@@ -10,7 +10,7 @@
   <% end %>
   
   <div class="row">
-    <%= render 'share', book: @book, user: :@user %>
+    <%= render 'share', books: @books, users: :@users %>
 
     <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
@@ -20,10 +20,10 @@
             <td>
               <%= link_to user_path(@user.id) do %>
                 <%= image_tag @books.user.get_profile_image(100,100) %><br>
-                <%= @book.user.name %>
+                <%= @books.user.name %>
               <% end %>
             </td>
-            <td><%= link_to @books.title, book_path(@books) %></td>
+            <td><%= link_to @books.title, book_path(@books.id) %></td>
             <td><%= @books.body %></td>
 
             <% if @books.user == current_user %>
